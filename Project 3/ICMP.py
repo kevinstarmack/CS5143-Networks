@@ -39,14 +39,14 @@ if countTo<len(string):
         return timeReceived-timeSenttimeLeft=timeLeft-howLongInSelectiftimeLeft<=0:
         return"Request timedout."defsendOnePing(mySocket,destAddr,ID):
         #Header
-        istype(8),code(8),checksum(16),id(16),sequence(16)myChecksum=0
+        istype(8),code(8),checksum(16),id(16),sequence(16),myChecksum=0
         #Make a dummy header with a 0 checksum
 
 #struct--
 Interpretstringsaspackedbinarydataheader=struct.pack("bbHHh",ICMP_ECHO_REQUEST,0,myChecksum,ID,1)
 data=struct.pack("d",time.time())
 #Calculate the checksum on the data and thedummy header
-myChecksum=checksum(str(header+data))#Gettherightchecksum,andputintheheader
+myChecksum=checksum(str(header+data))#Get the right checksum, and put in the header
 ifsys.platform=='darwin':#Convert 16-bit integers from host to network by teordermy
 Checksum=htons(myChecksum)&0xffffelse:myChecksum=htons(myChecksum)header=struct.pack("bbHHh",ICMP_ECHO_REQUEST,0,myChecksum,ID,1)packet=header+datamySocket.sendto(packet,(destAddr,1))
 #AF_INET address must be tuple,not str
